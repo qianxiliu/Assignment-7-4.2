@@ -1,0 +1,63 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[6]:
+
+
+import pandas as pd
+pd.read_csv("datasets/gradedata.csv")
+df = pd.read_csv("datasets/gradedata.csv")
+df['graderanked'] = df['grade'].rank(ascending=1)
+df.tail()
+df[df['graderanked'] < 21]
+df[df['graderanked'] < 6].sort_values('graderanked')
+
+
+# In[40]:
+
+
+import pandas as pd
+pd.read_csv("datasets/gradedata.csv")
+df = pd.read_csv("datasets/gradedata.csv")
+df['hoursranked'] = df['hours'].rank(ascending=1)
+
+
+df[df['hoursranked'] < 50]
+df[df['hoursranked'] < 50].sort_values('hoursranked')
+
+
+
+
+# In[42]:
+
+
+import pandas as pd
+pd.read_csv("datasets/gradedata.csv")
+df = pd.read_csv("datasets/gradedata.csv")
+import numpy as np
+df['isFailing'] = np.where(df['grade']<70,
+'yes', 'no')
+df.tail(10)
+df['isFailingMale'] = np.where((df['grade']<70)
+        & (df['gender'] == 'male'),'yes', 'no')
+df.tail(10)
+
+
+# In[67]:
+
+
+import pandas as pd
+pd.read_csv("datasets/gradedata.csv")
+df = pd.read_csv("datasets/gradedata.csv")
+import numpy as np
+df['isBusy'] = np.where((df['exercise']>3) 
+& (df['hours']>17),'yes','no')
+
+df
+
+
+# In[ ]:
+
+
+
+
